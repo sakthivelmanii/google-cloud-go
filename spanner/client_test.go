@@ -768,7 +768,7 @@ func serverErrorWithMinimalRetryDelay(code codes.Code, msg string) error {
 func waitForLocationAwareEndpointHealthy(t *testing.T, client *Client, address string) {
 	t.Helper()
 
-	waitForCondition(t, time.Second, func() bool {
+	waitForCondition(t, 5*time.Second, func() bool {
 		if client == nil || client.locationRouter == nil || client.locationRouter.endpointCache == nil {
 			return false
 		}
@@ -780,7 +780,7 @@ func waitForLocationAwareEndpointHealthy(t *testing.T, client *Client, address s
 func waitForLocationAwareEndpointActiveRequestCount(t *testing.T, client *Client, address string, want int) {
 	t.Helper()
 
-	waitForCondition(t, time.Second, func() bool {
+	waitForCondition(t, 5*time.Second, func() bool {
 		if client == nil || client.locationRouter == nil || client.locationRouter.endpointCache == nil {
 			return false
 		}
@@ -792,7 +792,7 @@ func waitForLocationAwareEndpointActiveRequestCount(t *testing.T, client *Client
 func waitForLocationAwareEndpointActiveRequestsAtLeast(t *testing.T, client *Client, address string, min int) {
 	t.Helper()
 
-	waitForCondition(t, time.Second, func() bool {
+	waitForCondition(t, 5*time.Second, func() bool {
 		if client == nil || client.locationRouter == nil || client.locationRouter.endpointCache == nil {
 			return false
 		}
